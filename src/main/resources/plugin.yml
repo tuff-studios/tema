@@ -1,0 +1,11 @@
+name: TEMA
+version: 1.0
+main: dev.craftwarestudios.tema.ExamplePlugin
+author: xw1w1
+commands:
+  gui:
+    description: Open the GUI example
+    usage: /gui [shared|personal]
+permissions:
+  gui.example:
+    default: true
