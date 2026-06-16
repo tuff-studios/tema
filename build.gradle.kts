@@ -1,14 +1,10 @@
 plugins {
-    kotlin("jvm") version "2.3.20"
-    id("com.gradleup.shadow") version "9.4.2"
-    id("xyz.jpenilla.run-paper") version "3.0.2"
+    alias(libs.plugins.kotlin.gradle.plugin)
+    alias(libs.plugins.shadow.jar)
+    alias(libs.plugins.run.paper)
 }
 
-group = "dev.craftwarestudios"
-version = "1.0-SNAPSHOT"
-
-val JAVA_VERSION = 25
-
+// there is no multi-module structure. not necessary to be moved to settings.gradle.kts
 repositories {
     mavenCentral()
     maven {
@@ -18,29 +14,40 @@ repositories {
 }
 
 dependencies {
-    implementation("com.google.code.gson:gson:2.14.0")
-    implementation("org.incendo:cloud-core:2.0.0")
-    implementation("org.incendo:cloud-paper:2.0.0-beta.15")
-    compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
+    compileOnly(libs.paper)
+
+    implementation(libs.cloud.core)
+    implementation(libs.cloud.paper)
+    implementation(libs.gson)
 }
+
+val javaVersion = 25
 
 tasks {
     runServer {
-        minecraftVersion("26.1.2")
+        minecraftVersion(libs.versions.minecraft.get())
     }
 
     shadowJar {
         archiveBaseName = "TEMA"
         archiveVersion = version.toString()
-        archiveClassifier.set("Release")
+        archiveClassifier = "release" // replace
         mergeServiceFiles()
+    }
+
+    processResources {
+        val projectVersion = version.toString()
+        //filesMatching("paper-plugin.yml") {    FYM PLUGIN.YML
+        filesMatching("plugin.yml") {
+            expand("version" to projectVersion)
+        }
     }
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(JAVA_VERSION))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(javaVersion))
 }
 
 kotlin {
-    jvmToolchain(JAVA_VERSION)
+    jvmToolchain(javaVersion)
 }
