@@ -1,0 +1,28 @@
+[versions]
+minecraft = "26.1.2"
+
+#plugin's versions
+kotlin = "2.3.20"
+shadow-jar = "9.4.2"
+run-paper = "3.0.2"
+
+#libraries' versions
+paper = "26.1.2.build.70-stable"
+gson = "2.14.0"
+cloud-core = "2.0.0"
+cloud-paper = "2.0.0-beta.15"
+
+[libraries]
+paper = { module = "io.papermc.paper:paper-api", version.ref = "paper" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+
+#I guess, test only
+cloud-core = { module = "org.incendo:cloud-core", version.ref = "cloud-core" }
+cloud-paper = { module = "org.incendo:cloud-paper", version.ref = "cloud-paper" }
+
+[plugins]
+kotlin-gradle-plugin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+shadow-jar = { id = "com.gradleup.shadow", version.ref = "shadow-jar" }
+
+#as well test only?
+run-paper = { id = "xyz.jpenilla.run-paper", version.ref = "run-paper" }

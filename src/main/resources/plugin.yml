@@ -1,7 +1,10 @@
+# why not paper-plugin.yml?
 name: TEMA
-version: 1.0
+version: '${version}'
 main: dev.craftwarestudios.tema.ExamplePlugin
 author: xw1w1
+
+# the fuck is this
 commands:
   tema-debug:
     description: Open the GUI example
