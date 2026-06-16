@@ -8,7 +8,6 @@ import org.bukkit.inventory.ItemStack
 
 open class ContainerToggle
 internal constructor(
-    override val slot: Int,
     private val enabledIcon: ItemStack,
     private val disabledIcon: ItemStack,
     private val enabledTitle: Component,
@@ -16,7 +15,7 @@ internal constructor(
     private val enabledDescription: MutableList<Component>,
     private val disabledDescription: MutableList<Component>,
     private val changeActions: MutableList<(ContainerClickContext, Boolean) -> Unit>
-) : AbstractContainerButton {
+) : SlotDefinition {
     private var _isToggled: Boolean = false
 
     fun isToggled(): Boolean {
@@ -28,7 +27,7 @@ internal constructor(
         changeActions.forEach { it(context, _isToggled) }
     }
 
-    override fun render(): ItemStack {
+    override fun renderToItem(): ItemStack {
         val item = if (isToggled()) enabledIcon.clone() else disabledIcon.clone()
         return if (isToggled()) {
             item.withNameAndLore(enabledTitle, enabledDescription)

@@ -1,7 +1,6 @@
 package dev.craftwarestudios.tema
 
 import dev.craftwarestudios.tema.examples.ExampleMultiPageGui
-import dev.craftwarestudios.tema.examples.ExampleThingGui
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
@@ -11,7 +10,6 @@ import org.bukkit.plugin.java.JavaPlugin
 class ExamplePlugin : JavaPlugin() {
     private val listener = GuiListener()
 
-    private val exampleThingy = ExampleThingGui()
     private val exampleMultipage = ExampleMultiPageGui()
 
     override fun onEnable() {
@@ -27,9 +25,6 @@ class ExamplePlugin : JavaPlugin() {
         val player = sender as? Player ?: return true
 
         when (args.firstOrNull()?.lowercase()) {
-            "thingy" -> {
-                exampleThingy.container.openInstanced(player)
-            }
             "multipaging-small" -> {
                 exampleMultipage.container9x3.openInstanced(player)
             }

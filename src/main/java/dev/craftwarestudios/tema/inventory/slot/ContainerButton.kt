@@ -8,17 +8,16 @@ import org.bukkit.inventory.ItemStack
 
 open class ContainerButton
 internal constructor(
-    override val slot: Int,
     private val iconDefinition: ItemStack,
     private val displayName: Component,
     private val description: MutableList<Component>,
     private val clickActions: MutableList<(ContainerClickContext) -> Unit>
-) : AbstractContainerButton {
+) : SlotDefinition {
     fun handleClick(ctx: ContainerClickContext) {
         clickActions.forEach { it(ctx) }
     }
 
-    override fun render(): ItemStack {
+    override fun renderToItem(): ItemStack {
         return iconDefinition.clone().withNameAndLore(displayName, description)
     }
 

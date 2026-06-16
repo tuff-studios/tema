@@ -9,7 +9,6 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.inventory.InventoryView
-import org.bukkit.inventory.ItemStack
 import java.util.*
 
 class InventoryContainerView
@@ -51,13 +50,13 @@ class InventoryContainerView
         this.open(target, page)
     }
 
-    fun open(target: Player, page: Int = _defaultPage): InventoryContainerView {
-        val pageIndex = parent.resolvePageIndex(page)
+    fun open(target: Player, index: Int = _defaultPage): InventoryContainerView {
+        val pageDefinition = parent.getPage(index)
+            ?: throw IllegalArgumentException("InventoryContainer has no page with index $index.")
 
-        _playerPageId[target.uniqueId] = pageIndex
+        _playerPageId[target.uniqueId] = index
         _playerOpenedView.remove(target.uniqueId)
 
-        val pageDefinition = parent.getPage(pageIndex)
         val inventoryView = parent.type.create(target, pageDefinition.title)
         this.render(inventoryView, pageDefinition)
         inventoryView.open()
@@ -87,7 +86,7 @@ class InventoryContainerView
     fun refresh(target: Player): Boolean {
         val inventoryView = _playerOpenedView[target.uniqueId] ?: return false
         val pageIndex = currentPage(target.uniqueId)
-        val page = parent.getPage(pageIndex)
+        val page = parent.getPage(pageIndex) ?: return false
         render(inventoryView, page)
         return true
     }
@@ -104,7 +103,7 @@ class InventoryContainerView
 
     fun handleClick(event: org.bukkit.event.inventory.InventoryClickEvent): Boolean {
         val player = event.whoClicked as? Player ?: return false
-        val page = parent.getPage(currentPage(player.uniqueId))
+        val page = parent.getPage(currentPage(player.uniqueId)) ?: return false
 
         if (event.rawSlot < 0 || event.rawSlot >= event.view.topInventory.size) {
             return false
@@ -134,12 +133,12 @@ class InventoryContainerView
         return true
     }
 
-    private fun render(inventoryView: InventoryView, page: PageDefinition) {
+    private fun render(inventoryView: InventoryView, page: InventoryContainerPage) {
         val inventory = inventoryView.topInventory
         inventory.clear()
 
         repeat(inventory.size) {
-            inventory.setItem(it, ItemStack.of(page.fill))
+            inventory.setItem(it, page.fill)
         }
 
         page.elements.forEach { element ->
@@ -147,7 +146,7 @@ class InventoryContainerView
                 return@forEach
             }
 
-            inventory.setItem(element.key, element.value.render())
+            inventory.setItem(element.key, element.value.renderToItem())
         }
     }
 }
