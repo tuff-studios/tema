@@ -34,7 +34,7 @@ class ExamplePlugin : JavaPlugin() {
                 exampleMultipage.container9x3.openInstanced(player)
             }
             "multipaging-big" -> {
-                exampleMultipage.container9x6.openInstanced(player)
+                exampleMultipage.container9x5.openInstanced(player)
             }
         }
         return true

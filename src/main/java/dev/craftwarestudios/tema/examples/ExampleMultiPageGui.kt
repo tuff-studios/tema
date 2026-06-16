@@ -10,7 +10,7 @@ import org.bukkit.inventory.MenuType
 
 class ExampleMultiPageGui {
     val container9x3: InventoryContainer = InventoryContainer(MenuType.GENERIC_9X3)
-    val container9x6: InventoryContainer = InventoryContainer(MenuType.GENERIC_9X6)
+    val container9x5: InventoryContainer = InventoryContainer(MenuType.GENERIC_9X5)
 
     init {
         val topLeft = ContainerButton.builder()
@@ -78,16 +78,16 @@ class ExampleMultiPageGui {
             addButton(bottomLeft.build(container9x3)).addButton(bottom.build(container9x3)).addButton(bottomRight.build(container9x3))
         })
 
-        container9x6.setPage(0, PageDefinition.builder(container9x6, title = Component.text("Multipaging debug/Page 0")).apply {
-            addButton(topLeft.build(container9x6)).addButton(topRight.build(container9x6)).addButton(top.build(container9x6))
-            addButton(left.build(container9x6)).addButton(center.build(container9x6)).addButton(right.build(container9x6))
-            addButton(bottomLeft.build(container9x6)).addButton(bottom.build(container9x6)).addButton(bottomRight.build(container9x6))
+        container9x5.setPage(0, PageDefinition.builder(container9x5, title = Component.text("Multipaging debug/Page 0")).apply {
+            addButton(topLeft.build(container9x5)).addButton(topRight.build(container9x5)).addButton(top.build(container9x5))
+            addButton(left.build(container9x5)).addButton(center.build(container9x5)).addButton(right.build(container9x5))
+            addButton(bottomLeft.build(container9x5)).addButton(bottom.build(container9x5)).addButton(bottomRight.build(container9x5))
         })
 
-        container9x6.setPage(1, PageDefinition.builder(container9x6, title = Component.text("Multipaging debug/Page 1")).apply {
-            addButton(topLeft.build(container9x6)).addButton(topRight.build(container9x6)).addButton(top.build(container9x6))
-            addButton(left.build(container9x6)).addButton(center.build(container9x6)).addButton(right.build(container9x6))
-            addButton(bottomLeft.build(container9x6)).addButton(bottom.build(container9x6)).addButton(bottomRight.build(container9x6))
+        container9x5.setPage(1, PageDefinition.builder(container9x5, title = Component.text("Multipaging debug/Page 1")).apply {
+            addButton(topLeft.build(container9x5)).addButton(topRight.build(container9x5)).addButton(top.build(container9x5))
+            addButton(left.build(container9x5)).addButton(center.build(container9x5)).addButton(right.build(container9x5))
+            addButton(bottomLeft.build(container9x5)).addButton(bottom.build(container9x5)).addButton(bottomRight.build(container9x5))
         })
     }
 }
