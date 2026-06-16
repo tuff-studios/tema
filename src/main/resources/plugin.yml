@@ -3,9 +3,9 @@ version: 1.0
 main: dev.craftwarestudios.tema.ExamplePlugin
 author: xw1w1
 commands:
-  gui:
+  tema-debug:
     description: Open the GUI example
-    usage: /gui [shared|personal]
+    usage: /tema-debug [shared|instance]
 permissions:
   gui.example:
     default: true
