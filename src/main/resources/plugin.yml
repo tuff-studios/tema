@@ -1,4 +1,5 @@
 # why not paper-plugin.yml?
+# ^ because we don't need it -e
 name: TEMA
 version: '${version}'
 main: dev.craftwarestudios.tema.ExamplePlugin
