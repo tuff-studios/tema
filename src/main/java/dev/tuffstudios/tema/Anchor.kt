@@ -1,4 +1,4 @@
-package dev.craftwarestudios.tema
+package dev.tuffstudios.tema
 
 enum class Anchor {
     TOP,

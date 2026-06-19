@@ -2,8 +2,8 @@
 # ^ because we don't need it -e
 name: TEMA
 version: '${version}'
-main: dev.craftwarestudios.tema.ExamplePlugin
-author: xw1w1
+main: dev.tuffstudios.tema.TEMA
+author: Egor Morozov
 
 # the fuck is this
 commands:
