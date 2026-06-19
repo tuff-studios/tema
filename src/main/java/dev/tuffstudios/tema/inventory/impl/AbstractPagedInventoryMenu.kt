@@ -9,7 +9,9 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap
 import org.jetbrains.annotations.ApiStatus
 
 @ApiStatus.AvailableSince("1.0")
-abstract class AbstractPagedInventoryMenu : MenuContainer, PagedMenu {
+abstract class AbstractPagedInventoryMenu(
+    private val createUI: (AbstractPagedInventoryMenu.() -> Unit)? = null
+) : MenuContainer, PagedMenu {
     /**
      * Список страниц, существующих в рамках этого [AbstractPagedInventoryMenu].
      *
@@ -18,7 +20,13 @@ abstract class AbstractPagedInventoryMenu : MenuContainer, PagedMenu {
      */
     private val pages: Int2ObjectLinkedOpenHashMap<MenuContent> = intToObjectMap()
 
-    init {
+    /**
+     * Вызывает [createUI], что инициализирует контейнер и страницы меню.
+     *
+     * @author Egor Morozov
+     * @since 1.0
+     */
+    internal fun build() {
         createUI()
     }
 
@@ -30,7 +38,9 @@ abstract class AbstractPagedInventoryMenu : MenuContainer, PagedMenu {
      * @author Egor Morozov
      * @since 1.0
      */
-    abstract fun createUI()
+    open fun createUI() {
+        this.createUI?.invoke(this)
+    }
 
     /**
      * Делает страницу с индексом [page] "открытой" в текущем [AbstractPagedInventoryMenu].

@@ -1,6 +1,7 @@
 package dev.tuffstudios.tema
 
 import dev.tuffstudios.tema.example.ExampleNestedMenu
+import dev.tuffstudios.tema.example.ExampleUsage
 import dev.tuffstudios.tema.inventory.InventoryMenuView
 import dev.tuffstudios.tema.inventory.SharedMenuView
 import org.bukkit.Bukkit
@@ -19,6 +20,7 @@ import java.util.UUID
 import java.util.concurrent.ConcurrentHashMap
 
 class TEMA : JavaPlugin(), Listener {
+    private val example = ExampleUsage()
     private val viewingSessions: ConcurrentHashMap<UUID, InventoryMenuView> = ConcurrentHashMap()
 
     fun register(viewer: HumanEntity, view: InventoryMenuView) {
@@ -51,6 +53,9 @@ class TEMA : JavaPlugin(), Listener {
                 val target = Bukkit.getOfflinePlayer(name)
                 val menu = ExampleNestedMenu(target)
                 menu.open(player)
+            }
+            "e" -> {
+                this.example.openFor(player)
             }
         }
 

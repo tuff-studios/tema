@@ -20,6 +20,7 @@ import java.util.UUID
 
 @Suppress("UnstableApiUsage")
 class ExampleNestedMenu(val target: OfflinePlayer) : AbstractInventoryMenu(MenuType.GENERIC_9X3) {
+    private var built: Boolean = false
     private val views: MutableMap<UUID, InstancedMenuView> = mutableMapOf()
 
     override fun createUI() {
@@ -28,9 +29,9 @@ class ExampleNestedMenu(val target: OfflinePlayer) : AbstractInventoryMenu(MenuT
             .setOnRender { viewer ->
                 val item = ItemStack.of(Material.PLAYER_HEAD)
                 val meta = item.itemMeta as SkullMeta
-                meta.playerProfile = viewer.playerProfile
-                meta.displayName(viewer.displayName())
-                meta.lore(listOf(Component.text(viewer.uniqueId.toString())))
+                meta.playerProfile = target.playerProfile
+                meta.displayName(Component.text(target.name ?: "Unknown"))
+                meta.lore(listOf(Component.text(target.uniqueId.toString())))
                 item.itemMeta = meta
                 item
             }
@@ -61,6 +62,8 @@ class ExampleNestedMenu(val target: OfflinePlayer) : AbstractInventoryMenu(MenuT
     }
 
     override fun open(viewer: HumanEntity): Boolean {
+        if (!this.built) this.build(); this.built = true
+        //TODO придумать что-нибудь с build(), без этого контент гуи тупо не инициализируется
         if (viewer !is Player || !viewer.isOnline) return false
         if (!this.views.containsKey(viewer.uniqueId)) {
             this.views[viewer.uniqueId] = InstancedInventoryViewImpl(this, this, viewer)

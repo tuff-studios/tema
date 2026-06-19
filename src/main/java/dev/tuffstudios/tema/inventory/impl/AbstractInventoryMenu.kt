@@ -16,7 +16,7 @@ import org.jetbrains.annotations.ApiStatus
 @Suppress("UnstableApiUsage")
 @ApiStatus.AvailableSince("1.0")
 abstract class AbstractInventoryMenu(
-    override val type: MenuType
+    override val type: MenuType, private val createUI: (AbstractInventoryMenu.() -> Unit)? = null
 ) : MenuContainer, MenuContent, MenuLayout {
     /**
      * Заголовок, отображающийся в левом верхнем углу при открытии инвентаря.
@@ -55,7 +55,13 @@ abstract class AbstractInventoryMenu(
      */
     private val anchorPositions: Map<Anchor, Int> = resolveAnchorPositions(this.type)
 
-    init {
+    /**
+     * Вызывает [createUI], что инициализирует контейнер и контент [MenuContent].
+     *
+     * @author Egor Morozov
+     * @since 1.0
+     */
+    internal fun build() {
         createUI()
     }
 
@@ -67,7 +73,9 @@ abstract class AbstractInventoryMenu(
      * @author Egor Morozov
      * @since 1.0
      */
-    abstract fun createUI()
+    open fun createUI() {
+        this.createUI?.invoke(this)
+    }
 
     /**
      * Устанавливает заголовок страницы.

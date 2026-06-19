@@ -14,22 +14,20 @@ import java.util.UUID
 
 @ApiStatus.AvailableSince("1.0")
 class PagedInventoryMenu(
-    private val createUI: PagedInventoryMenu.() -> Unit
-) : AbstractPagedInventoryMenu() {
+    init: AbstractPagedInventoryMenu.() -> Unit
+) : AbstractPagedInventoryMenu(init) {
+    private var built: Boolean = false
     private var sharedView: SharedMenuViewImpl = getSharedView()
     private var sharedMenuViewPage: Int = 0
 
     private val views: Object2ObjectLinkedOpenHashMap<UUID, InstancedInventoryViewImpl> = objectToObjectMap()
-
-    override fun createUI() {
-        this.createUI.invoke(this)
-    }
 
     override fun open(viewer: HumanEntity): Boolean {
         return this.open(viewer, 0)
     }
 
     fun open(viewer: HumanEntity, page: Int): Boolean {
+        if (!this.built) this.build(); this.built = true
         val page = getPage(page) ?: return false
         if (viewer !is Player || !viewer.isOnline) return false
         this.views[viewer.uniqueId] = InstancedInventoryViewImpl(page, this, viewer)

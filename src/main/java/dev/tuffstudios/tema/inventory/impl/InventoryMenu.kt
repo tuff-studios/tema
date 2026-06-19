@@ -15,17 +15,14 @@ import java.util.*
 @ApiStatus.AvailableSince("1.0")
 class InventoryMenu(
     type: MenuType,
-    private val createUI: InventoryMenu.() -> Unit
-) : AbstractInventoryMenu(type) {
+    init: AbstractInventoryMenu.() -> Unit
+) : AbstractInventoryMenu(type, init) {
+    private var built: Boolean = false
     private var sharedView: SharedMenuView = SharedMenuViewImpl(this, this)
-
     private val views: Object2ObjectLinkedOpenHashMap<UUID, InstancedInventoryViewImpl> = objectToObjectMap()
 
-    override fun createUI() {
-        this.createUI.invoke(this)
-    }
-
     override fun open(viewer: HumanEntity): Boolean {
+        if (!this.built) this.build(); this.built = true
         if (viewer !is Player || !viewer.isOnline) return false
         if (!this.views.containsKey(viewer.uniqueId)) {
             this.views[viewer.uniqueId] = InstancedInventoryViewImpl(this, this, viewer)
