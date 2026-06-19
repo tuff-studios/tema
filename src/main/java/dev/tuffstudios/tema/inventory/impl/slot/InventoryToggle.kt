@@ -82,6 +82,8 @@ class InventoryToggle : SlotDefinition {
     fun listToggleActions(): List<ToggleClickAction> = this.toggleActions
 
     override fun renderToItem(viewer: HumanEntity): ItemStack {
-        return this.renderAction.invoke(viewer as Player, state)
+        val item = this.renderAction.invoke(viewer as Player, this.state)
+        this.itemMutations.forEach { it(item) }
+        return item
     }
 }

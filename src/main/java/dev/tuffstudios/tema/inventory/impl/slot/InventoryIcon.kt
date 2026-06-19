@@ -14,6 +14,8 @@ class InventoryIcon : SlotDefinition {
     private var title: Component = Component.text("Icon")
     private val description: MutableList<Component> = mutableListOf()
 
+    private val itemMutations: MutableList<(ItemStack) -> Unit> = mutableListOf()
+
     @ApiStatus.Experimental
     private var renderAction: ButtonRenderAction = { viewer ->
         val item = ItemStack.of(icon)
@@ -44,11 +46,13 @@ class InventoryIcon : SlotDefinition {
         this.renderAction = action
     }
 
-    override fun editItem(action: (ItemStack) -> Unit): SlotDefinition {
-        TODO("Not yet implemented")
+    override fun editItem(action: (ItemStack) -> Unit) = apply {
+        this.itemMutations += action
     }
 
     override fun renderToItem(viewer: HumanEntity): ItemStack {
-        return this.renderAction.invoke(viewer as Player)
+        val item = this.renderAction.invoke(viewer as Player)
+        this.itemMutations.forEach { it(item) }
+        return item
     }
 }

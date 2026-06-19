@@ -59,6 +59,8 @@ class InventoryButton : SlotDefinition {
     fun listClickActions(): List<ButtonClickAction> = this.clickActions
 
     override fun renderToItem(viewer: HumanEntity): ItemStack {
-        return this.renderAction.invoke(viewer as Player)
+        val item = this.renderAction.invoke(viewer as Player)
+        this.itemMutations.forEach { it(item) }
+        return item
     }
 }
