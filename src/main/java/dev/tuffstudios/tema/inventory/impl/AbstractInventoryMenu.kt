@@ -13,6 +13,19 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.MenuType
 import org.jetbrains.annotations.ApiStatus
 
+/**
+ * Абстрактная реализация [MenuContainer].
+ *
+ * Этот класс реализует методы интерфейса [MenuContent], по этому в классе напрямую доступны методы
+ * [setTitle], [setSlot], [setBackground] для непосредственного изменения того, как должен отобразиться
+ * итоговый инвентарь.
+ *
+ * Весь код создания интерфейса должен быть передан в параметр конструктора [createUI], либо через
+ * реализацию абстрактной функции [AbstractInventoryMenu.createUI].
+ *
+ * @author Egor Morozov
+ * @since 1.0
+ */
 @Suppress("UnstableApiUsage")
 @ApiStatus.AvailableSince("1.0")
 abstract class AbstractInventoryMenu(

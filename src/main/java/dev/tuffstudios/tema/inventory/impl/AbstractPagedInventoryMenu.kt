@@ -8,6 +8,21 @@ import dev.tuffstudios.tema.inventory.PagedMenu
 import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap
 import org.jetbrains.annotations.ApiStatus
 
+/**
+ * Абстрактная реализация [MenuContainer] с поддержкой страниц.
+ *
+ * Этот класс реализует методы интерфейса [PagedMenu], что позволяет ему не наследовать
+ * [MenuContent] напрямую, а вместо этого использовать отдельные классы страниц, например, [InventoryMenuPage].
+ *
+ * Весь код создания интерфейса должен быть передан в параметр конструктора [createUI], либо через
+ * реализацию абстрактной функции [AbstractPagedInventoryMenu.createUI].
+ *
+ * При создании [createUI] нужно учитывать, что в первую очередь все содержимое должно быть передано
+ * через страницы, так как стандартной реализации [MenuContent] этот класс не содержит.
+ *
+ * @author Egor Morozov
+ * @since 1.0
+ */
 @ApiStatus.AvailableSince("1.0")
 abstract class AbstractPagedInventoryMenu(
     private val createUI: (AbstractPagedInventoryMenu.() -> Unit)? = null
