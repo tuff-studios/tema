@@ -12,7 +12,7 @@ import org.jetbrains.annotations.ApiStatus
  * Именно такая концепция позволяет надёжно использовать [org.bukkit.entity.Player] внутри класса,
  * поскольку после выхода игрока с сервера, поле [inventoryView] станет не валидным само по себе.
  *
- * В отличие от [SharedMenuView], этот класс имеет строго обозначенный
+ * В отличие от [SharedMenuView], этот класс имеет строго обозначенного [viewer]`а.
  *
  * @author Egor Morozov
  * @since 1.0

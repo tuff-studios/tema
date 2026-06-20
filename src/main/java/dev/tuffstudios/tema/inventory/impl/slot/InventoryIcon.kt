@@ -9,6 +9,11 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.jetbrains.annotations.ApiStatus
 
+/**
+ * Стандартная реализация [SlotDefinition].
+ *
+ * Это обычная, не кликабельная иконка инвентаря.
+ */
 class InventoryIcon : SlotDefinition {
     private var icon: Material = Material.DIAMOND
     private var title: Component = Component.text("Icon")
@@ -24,28 +29,67 @@ class InventoryIcon : SlotDefinition {
         item
     }
 
+    /**
+     * Устанавливает иконку этой кнопки.
+     *
+     * @author Egor Morozov
+     * @since 1.0
+     */
     fun setIcon(material: Material) = apply {
         this.icon = material
     }
 
+    /**
+     * Устанавливает заголовок этой кнопки.
+     *
+     * @author Egor Morozov
+     * @since 1.0
+     */
     fun setTitle(component: Component) = apply {
         this.title = component
     }
 
+    /**
+     * Устанавливает описание этой кнопки.
+     *
+     * @author Egor Morozov
+     * @since 1.0
+     */
     fun setDescription(list: List<Component>) = apply {
         this.description.clear()
         this.description += list
     }
 
+    /**
+     * Добавляет строку описания этой кнопки.
+     *
+     * @author Egor Morozov
+     * @since 1.0
+     */
     fun addDescriptionLine(component: Component) = apply {
         this.description += component
     }
 
+    /**
+     * **EXPERIMENTAL**: Сохраняет действие рендера в список.
+     *
+     * После окончания рендера кнопки в [ItemStack], это действие будет применены к предмету.
+     *
+     * @author Egor Morozov
+     * @since 1.0
+     */
     @ApiStatus.Experimental
     fun setOnRender(action: ButtonRenderAction) = apply {
         this.renderAction = action
     }
 
+    /**
+     * Применяет данное [action] к [ItemStack],
+     * который возвращается методом [renderToItem].
+     *
+     * @author Egor Morozov
+     * @since 1.0
+     */
     override fun editItem(action: (ItemStack) -> Unit) = apply {
         this.itemMutations += action
     }
