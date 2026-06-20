@@ -92,7 +92,7 @@ class PagedInventoryMenu(
             return it.inventoryView == player.openInventory
         }
 
-        return false
+        return this.sharedView.isViewing(player)
     }
 
     private fun getSharedView(): SharedMenuViewImpl {
