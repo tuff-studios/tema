@@ -56,7 +56,7 @@ class InventoryMenu(
     }
 
     override fun isViewing(player: HumanEntity): Boolean {
-        val view = this.views[player.uniqueId] ?: return false
+        val view = this.views[player.uniqueId] ?: return this.sharedView.isViewing(player)
         return view.isViewing(player)
     }
 }
