@@ -1,6 +1,7 @@
 package dev.tuffstudios.tema
 
 import dev.tuffstudios.tema.example.ExampleNestedMenu
+import dev.tuffstudios.tema.example.ExampleNestedMenuMp
 import dev.tuffstudios.tema.example.ExampleUsage
 import dev.tuffstudios.tema.inventory.InventoryMenuView
 import dev.tuffstudios.tema.inventory.SharedMenuView
@@ -56,6 +57,11 @@ class TEMA : JavaPlugin(), Listener {
             }
             "e" -> {
                 this.example.openFor(player)
+            }
+            "m" -> {
+                val menu = ExampleNestedMenuMp()
+                menu.build()
+                menu.open(player)
             }
         }
 
