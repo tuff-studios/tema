@@ -4,6 +4,7 @@ name: TEMA
 version: '${version}'
 main: dev.tuffstudios.tema.TEMA
 author: Egor Morozov
+api-version: 1.21
 
 # the fuck is this
 commands:
