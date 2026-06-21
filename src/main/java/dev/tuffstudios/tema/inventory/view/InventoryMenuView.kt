@@ -1,17 +1,18 @@
-package dev.tuffstudios.tema.inventory
+package dev.tuffstudios.tema.inventory.view
 
+import dev.tuffstudios.tema.inventory.MenuContainer
 import org.bukkit.entity.HumanEntity
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.jetbrains.annotations.ApiStatus
 
 /**
- * Представляет собой активную сессию просмотра [MenuContainer].
+ * Представляет собой активную сессию просмотра [dev.tuffstudios.tema.inventory.MenuContainer].
  *
  * Такая сессия разделена на два типа: [InstancedMenuView] и [SharedMenuView].
  *
  * Разные типы сессий имеют немного различную структуру и предназначение.
  *
- * Каждый класс имеет поле [menu] типа [MenuContainer], слепком которого он является.
+ * Каждый класс имеет поле [menu] типа [dev.tuffstudios.tema.inventory.MenuContainer], слепком которого он является.
  *
  * @author Egor Morozov
  * @since 1.0

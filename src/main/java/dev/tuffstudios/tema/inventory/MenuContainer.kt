@@ -1,5 +1,6 @@
 package dev.tuffstudios.tema.inventory
 
+import dev.tuffstudios.tema.inventory.view.SharedMenuView
 import org.bukkit.entity.HumanEntity
 import org.jetbrains.annotations.ApiStatus
 import java.util.UUID
@@ -15,7 +16,7 @@ import java.util.UUID
  * некоторые являются standalone, однако [MenuContainer] описывает базовый минимум того, что должен уметь класс.
  *
  * Стоит учесть, что реализация [asSharedView] является исключительно опциональной.
- * [SharedMenuView] не должен присутствовать в абсолютно каждой реализации интерфейса, это
+ * [dev.tuffstudios.tema.inventory.view.SharedMenuView] не должен присутствовать в абсолютно каждой реализации интерфейса, это
  * исключительно решение самого разработчика.
  *
  * @author Egor Morozov

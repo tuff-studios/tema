@@ -3,8 +3,8 @@ package dev.tuffstudios.tema
 import dev.tuffstudios.tema.example.ExampleNestedMenu
 import dev.tuffstudios.tema.example.ExampleNestedMenuMp
 import dev.tuffstudios.tema.example.ExampleUsage
-import dev.tuffstudios.tema.inventory.InventoryMenuView
-import dev.tuffstudios.tema.inventory.SharedMenuView
+import dev.tuffstudios.tema.inventory.view.InventoryMenuView
+import dev.tuffstudios.tema.inventory.view.SharedMenuView
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender

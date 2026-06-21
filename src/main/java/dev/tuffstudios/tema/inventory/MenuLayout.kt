@@ -7,7 +7,7 @@ import org.jetbrains.annotations.ApiStatus
 /**
  * Класс с дополнительными методами для работы с лейаутом контейнеров.
  *
- * Он может быть использован как самими [MenuContainer], так и страницами или отдельными [InventoryMenuView].
+ * Он может быть использован как самими [MenuContainer], так и страницами или отдельными [dev.tuffstudios.tema.inventory.view.InventoryMenuView].
  *
  * @author Egor Morozov
  * @since 1.0

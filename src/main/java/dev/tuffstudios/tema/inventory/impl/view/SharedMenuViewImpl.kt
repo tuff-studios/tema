@@ -2,10 +2,10 @@ package dev.tuffstudios.tema.inventory.impl.view
 
 import dev.tuffstudios.tema.ContainerClickContext
 import dev.tuffstudios.tema.TEMA
-import dev.tuffstudios.tema.inventory.InventoryMenuView
+import dev.tuffstudios.tema.inventory.view.InventoryMenuView
 import dev.tuffstudios.tema.inventory.MenuContainer
 import dev.tuffstudios.tema.inventory.MenuContent
-import dev.tuffstudios.tema.inventory.SharedMenuView
+import dev.tuffstudios.tema.inventory.view.SharedMenuView
 import dev.tuffstudios.tema.inventory.impl.slot.InventoryButton
 import dev.tuffstudios.tema.inventory.impl.slot.InventoryToggle
 import dev.tuffstudios.tema.objectToObjectMap

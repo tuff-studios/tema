@@ -2,7 +2,7 @@ package dev.tuffstudios.tema.inventory.impl.view
 
 import dev.tuffstudios.tema.ContainerClickContext
 import dev.tuffstudios.tema.TEMA
-import dev.tuffstudios.tema.inventory.InstancedMenuView
+import dev.tuffstudios.tema.inventory.view.InstancedMenuView
 import dev.tuffstudios.tema.inventory.MenuContainer
 import dev.tuffstudios.tema.inventory.MenuContent
 import dev.tuffstudios.tema.inventory.impl.slot.InventoryButton

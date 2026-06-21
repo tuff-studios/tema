@@ -1,8 +1,8 @@
 package dev.tuffstudios.tema.example
 
 import dev.tuffstudios.tema.Anchor
-import dev.tuffstudios.tema.inventory.InstancedMenuView
-import dev.tuffstudios.tema.inventory.SharedMenuView
+import dev.tuffstudios.tema.inventory.view.InstancedMenuView
+import dev.tuffstudios.tema.inventory.view.SharedMenuView
 import dev.tuffstudios.tema.inventory.impl.AbstractPagedInventoryMenu
 import dev.tuffstudios.tema.inventory.impl.InventoryMenuPage
 import dev.tuffstudios.tema.inventory.impl.view.InstancedInventoryViewImpl

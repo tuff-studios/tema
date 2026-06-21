@@ -1,9 +1,9 @@
 package dev.tuffstudios.tema.inventory.impl
 
-import dev.tuffstudios.tema.inventory.SharedMenuView
+import dev.tuffstudios.tema.inventory.view.SharedMenuView
 import dev.tuffstudios.tema.inventory.impl.view.InstancedInventoryViewImpl
 import dev.tuffstudios.tema.inventory.impl.view.SharedMenuViewImpl
-import dev.tuffstudios.tema.inventory.InstancedMenuView
+import dev.tuffstudios.tema.inventory.view.InstancedMenuView
 import dev.tuffstudios.tema.inventory.MenuContainer
 import dev.tuffstudios.tema.objectToObjectMap
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap

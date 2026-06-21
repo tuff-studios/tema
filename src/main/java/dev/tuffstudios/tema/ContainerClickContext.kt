@@ -1,6 +1,6 @@
 package dev.tuffstudios.tema
 
-import dev.tuffstudios.tema.inventory.InventoryMenuView
+import dev.tuffstudios.tema.inventory.view.InventoryMenuView
 import dev.tuffstudios.tema.inventory.MenuContent
 import dev.tuffstudios.tema.inventory.slot.SlotDefinition
 import org.bukkit.entity.Player

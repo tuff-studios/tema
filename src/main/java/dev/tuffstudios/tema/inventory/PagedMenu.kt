@@ -6,7 +6,7 @@ import org.jetbrains.annotations.ApiStatus
  * Интерфейс добавляющий поддержку многостраничности.
  *
  * Этот класс напрямую не является реализацией или подтипом [MenuContainer] или
- * [InventoryMenuView], но подразумевает наличие многостраничности в этих классах.
+ * [dev.tuffstudios.tema.inventory.view.InventoryMenuView], но подразумевает наличие многостраничности в этих классах.
  *
  * @author Egor Morozov
  * @since 1.0

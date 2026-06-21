@@ -1,11 +1,11 @@
-package dev.tuffstudios.tema.inventory
+package dev.tuffstudios.tema.inventory.view
 
 import org.bukkit.entity.HumanEntity
 import org.bukkit.inventory.InventoryView
 import org.jetbrains.annotations.ApiStatus
 
 /**
- * Представляет собой активную сессию просмотра [MenuContainer].
+ * Представляет собой активную сессию просмотра [dev.tuffstudios.tema.inventory.MenuContainer].
  *
  * Описывает [InventoryMenuView] созданный для одного конкретного игрока.
  *
